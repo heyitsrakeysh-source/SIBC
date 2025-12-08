@@ -96,6 +96,7 @@ const reelVideos = [
 
 const reelsGrid = document.getElementById('reelsGrid');
 const videoElements = [];
+let reelsStarted = false;
 
 reelVideos.forEach((videoSrc, index) => {
     const reelItem = document.createElement('div');
@@ -126,16 +127,25 @@ reelVideos.forEach((videoSrc, index) => {
 });
 
 if (videoElements.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
+    const reelsVideoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting && !videoElements[0].played.length) {
+            if (entry.isIntersecting) {
                 videoElements[0].muted = false;
-                videoElements[0].play();
+                videoElements[0].play().catch(() => {});
+                reelsStarted = true;
+            } else {
+                if (reelsStarted) {
+                    videoElements.forEach(v => {
+                        v.pause();
+                        v.currentTime = 0;
+                    });
+                    reelsStarted = false;
+                }
             }
         });
     }, { threshold: 0.5 });
     
-    observer.observe(reelsGrid);
+    reelsVideoObserver.observe(reelsGrid);
 }
 
 const stickersGrid = document.getElementById('stickersGrid');
@@ -196,26 +206,72 @@ const bgMusic = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 const musicIcon = musicToggle.querySelector('.music-icon');
 const volumeSlider = document.getElementById('volumeSlider');
-let isPlaying = false;
+const reelsSection = document.getElementById('reels');
+let isPlaying = true;
+let normalVolume = 0.5;
+let musicStarted = false;
 
-bgMusic.volume = 0.5;
+bgMusic.volume = normalVolume;
+musicIcon.textContent = '🔊';
+musicToggle.classList.add('playing');
 
-musicToggle.addEventListener('click', () => {
+const startMusic = () => {
+    if (!musicStarted && isPlaying) {
+        bgMusic.play().then(() => {
+            musicStarted = true;
+            document.removeEventListener('mousemove', startMusic);
+            document.removeEventListener('keydown', startMusic);
+            document.removeEventListener('wheel', startMusic);
+        }).catch(() => {});
+    }
+};
+
+document.addEventListener('click', startMusic, { once: true });
+document.addEventListener('scroll', startMusic, { once: true });
+document.addEventListener('touchstart', startMusic, { once: true });
+document.addEventListener('mousemove', startMusic);
+document.addEventListener('keydown', startMusic);
+document.addEventListener('wheel', startMusic, { once: true });
+
+setTimeout(startMusic, 500);
+
+musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (isPlaying) {
         bgMusic.pause();
         musicIcon.textContent = '🔇';
         musicToggle.classList.remove('playing');
+        isPlaying = false;
+        musicStarted = true;
     } else {
         bgMusic.play();
         musicIcon.textContent = '🔊';
         musicToggle.classList.add('playing');
+        isPlaying = true;
+        musicStarted = true;
     }
-    isPlaying = !isPlaying;
 });
 
 volumeSlider.addEventListener('input', (e) => {
-    bgMusic.volume = e.target.value / 100;
+    normalVolume = e.target.value / 100;
+    if (!reelsSection || !document.querySelector('#reels').getBoundingClientRect().top < window.innerHeight) {
+        bgMusic.volume = normalVolume;
+    }
 });
+
+const reelsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            bgMusic.volume = 0.2;
+        } else {
+            bgMusic.volume = normalVolume;
+        }
+    });
+}, { threshold: 0.3 });
+
+if (reelsSection) {
+    reelsObserver.observe(reelsSection);
+}
 
 const scrollToTopBtn = document.getElementById('scrollToTop');
 
