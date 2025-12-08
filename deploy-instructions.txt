@@ -1,0 +1,29 @@
+GitHub Deployment Instructions
+================================
+
+Open Command Prompt in the "Restaurant Website" folder and run these commands:
+
+1. Initialize Git:
+   git init
+
+2. Add all files:
+   git add .
+
+3. Commit files:
+   git commit -m "Initial commit - Restaurant website"
+
+4. Connect to GitHub (replace YOUR-USERNAME and YOUR-REPO-NAME):
+   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+
+5. Push to GitHub:
+   git branch -M main
+   git push -u origin main
+
+After uploading, enable GitHub Pages:
+1. Go to repository Settings
+2. Click "Pages" in left sidebar
+3. Under "Source", select "main" branch
+4. Click "Save"
+5. Your site will be live at: https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
+
+Wait 2-3 minutes for the site to go live!
