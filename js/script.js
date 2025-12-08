@@ -60,27 +60,30 @@ galleryImages.forEach(image => {
 const stickerImages = [
     "images/stickers/1 (2).png",
     "images/stickers/1 (4).png",
-    "images/stickers/1 (5).png",
-    "images/stickers/1 (6).png",
-    "images/stickers/1 (7).png",
-    "images/stickers/1 (8).png",
-    "images/stickers/1 (9).png",
-    "images/stickers/1 (10).png",
     "images/stickers/1 (12).png",
-    "images/stickers/1 (13).png",
     "images/stickers/1 (14).png",
     "images/stickers/1 (15).png",
-    "images/stickers/1 (16).png",
-    "images/stickers/1 (17).png",
-    "images/stickers/1 (18).png",
     "images/stickers/1 (19).png",
     "images/stickers/1 (20).png",
     "images/stickers/1 (21).png",
     "images/stickers/1 (22).png",
-    "images/stickers/1 (23).png",
-    "images/stickers/1 (24).png",
-    "images/stickers/1 (25).png",
-    "images/stickers/1 (26).png",
+    "images/stickers/2 (1).png",
+    "images/stickers/2 (2).png",
+    "images/stickers/2 (3).png",
+    "images/stickers/2 (4).png",
+    "images/stickers/2 (5).png",
+    "images/stickers/2 (6).png",
+    "images/stickers/2 (7).png",
+    "images/stickers/2 (8).png",
+    "images/stickers/2 (9).png",
+    "images/stickers/2 (10).png",
+    "images/stickers/2 (11).png",
+    "images/stickers/2 (12).png",
+    "images/stickers/2 (13).png",
+    "images/stickers/2 (14).png",
+    "images/stickers/2 (15).png",
+    "images/stickers/2 (16).png",
+    "images/stickers/2 (17).png",
     "images/stickers/baby.png",
     "images/stickers/dancer.png"
 ];
@@ -90,7 +93,10 @@ stickerImages.forEach((sticker, index) => {
     const stickerItem = document.createElement('div');
     stickerItem.className = 'sticker-item';
     stickerItem.innerHTML = `
-        <img src="${sticker}" alt="Mascot Sticker ${index + 1}">
+        <div class="sticker-image-wrapper">
+            <img src="${sticker}?v=${Date.now()}" alt="Mascot Sticker ${index + 1}">
+            <img src="images/logo/logo.png" alt="Logo" class="sticker-logo">
+        </div>
         <a href="${sticker}" download="brahmin-cafe-sticker-${index + 1}.png" class="sticker-download">Download</a>
     `;
     stickersGrid.appendChild(stickerItem);
