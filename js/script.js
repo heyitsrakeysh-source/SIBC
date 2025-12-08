@@ -88,6 +88,56 @@ const stickerImages = [
     "images/stickers/dancer.png"
 ];
 
+const reelVideos = [
+    "Reels/1.mp4",
+    "Reels/2.mp4",
+    "Reels/3.mp4"
+];
+
+const reelsGrid = document.getElementById('reelsGrid');
+const videoElements = [];
+
+reelVideos.forEach((videoSrc, index) => {
+    const reelItem = document.createElement('div');
+    reelItem.className = 'reel-item';
+    reelItem.innerHTML = `
+        <video controls playsinline muted data-index="${index}">
+            <source src="${videoSrc}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    `;
+    reelsGrid.appendChild(reelItem);
+    const video = reelItem.querySelector('video');
+    videoElements.push(video);
+    
+    video.addEventListener('play', () => {
+        videoElements.forEach((v, i) => {
+            if (i !== index) {
+                v.muted = true;
+            }
+        });
+        video.muted = false;
+    });
+    
+    video.addEventListener('ended', () => {
+        const nextIndex = (index + 1) % videoElements.length;
+        videoElements[nextIndex].play();
+    });
+});
+
+if (videoElements.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !videoElements[0].played.length) {
+                videoElements[0].muted = false;
+                videoElements[0].play();
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(reelsGrid);
+}
+
 const stickersGrid = document.getElementById('stickersGrid');
 stickerImages.forEach((sticker, index) => {
     const stickerItem = document.createElement('div');
@@ -145,7 +195,10 @@ themeToggle.addEventListener('click', () => {
 const bgMusic = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 const musicIcon = musicToggle.querySelector('.music-icon');
+const volumeSlider = document.getElementById('volumeSlider');
 let isPlaying = false;
+
+bgMusic.volume = 0.5;
 
 musicToggle.addEventListener('click', () => {
     if (isPlaying) {
@@ -158,6 +211,10 @@ musicToggle.addEventListener('click', () => {
         musicToggle.classList.add('playing');
     }
     isPlaying = !isPlaying;
+});
+
+volumeSlider.addEventListener('input', (e) => {
+    bgMusic.volume = e.target.value / 100;
 });
 
 const scrollToTopBtn = document.getElementById('scrollToTop');

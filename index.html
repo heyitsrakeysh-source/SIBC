@@ -14,9 +14,12 @@
         <source src="background-music.mp3" type="audio/mpeg">
     </audio>
 
-    <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
-        <span class="music-icon">🔇</span>
-    </button>
+    <div class="music-control">
+        <button class="music-toggle" id="musicToggle" aria-label="Toggle music">
+            <span class="music-icon">🔇</span>
+        </button>
+        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" aria-label="Volume control">
+    </div>
 
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
         <span>↑</span>
@@ -32,6 +35,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reels">Reels</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -78,33 +82,6 @@
                     <img src="images/mascots/About us.png" alt="About Us Mascot">
                 </div>
             </div>
-
-            <div class="founders">
-                <h2>Meet Our Founders</h2>
-                <div class="founders-grid">
-                    <div class="founder">
-                        <img src="images/founders/Ami Shah.jpg" alt="Ami Shah">
-                        <h3>Ami Shah</h3>
-                        <p>Ami Shah is a sharp-minded Gujarati entrepreneur with a strong track record of scaling businesses. With years of hands-on experience managing finances across multiple restaurant formats and contributing to large business networks like Amway, she brings the vision, discipline, and strategy that power the brand. Her business instincts and passion for innovation helped introduce authentic Benne Dosa and regional South Indian flavours to Mumbai's food scene.</p>
-                    </div>
-                    <div class="founder">
-                        <img src="images/founders/Sudhir Naik.jpg" alt="Sudhir Naik">
-                        <h3>Sudhir Naik</h3>
-                        <p>Sudhir Naik, deeply rooted in South Indian culinary traditions, comes with extensive experience in operating and expanding restaurant chains. His expertise in kitchen operations, menu development, and maintaining authentic flavours ensures that every dish stays true to its origins. His commitment to quality and consistency forms the backbone of the brand's food philosophy.</p>
-                    </div>
-                </div>
-                <div class="founders-story">
-                    <h3>Together</h3>
-                    <p>Ami and Sudhir joined forces four years ago, blending her business mastery with his culinary expertise to build one of Mumbai's most loved destinations for South Indian comfort food. Their partnership introduced Benne Dosa to Mumbai and continues to bring regional flavours to the city with authenticity, warmth, and heart.</p>
-                </div>
-            </div>
-
-            <div class="why-name">
-                <h3>Why The Name South Indian Brahmin Café?</h3>
-                <p>It has nothing to do with casteism or division and it simply a reflection of tradition, authenticity, and the way food has been prepared for generations. Just like 'Punjabi Dhaba' or 'Parsi Café' represents a food culture, our name highlights the care, purity, and hygiene we put into every dish we serve.</p>
-                <p>More importantly, our restaurant is for everyone. We eat together, serve together, and believe that food is meant to bring people closer, not divide them.</p>
-                <p>We truly appreciate all your love and feedback. Our goal is to keep improving, serving better flavors, better experiences, and a welcoming space for all. Thank you for being part of our journey!</p>
-            </div>
         </div>
     </section>
 
@@ -115,6 +92,13 @@
                 <a href="Menu.pdf" target="_blank" class="menu-btn view-menu-btn">View Menu</a>
                 <a href="Menu.pdf" download class="menu-btn download-menu-btn">Download Menu</a>
             </div>
+            
+            <div id="reels" class="reels-inline">
+                <h2>Watch Our Reels 🎬</h2>
+                <p class="reels-subtitle">Check out our delicious creations and behind-the-scenes moments!</p>
+                <div class="reels-grid" id="reelsGrid"></div>
+            </div>
+            
             <h2>Our Specialties</h2>
             <div class="menu-grid" id="menuGrid"></div>
         </div>
@@ -165,6 +149,37 @@
             </div>
             <div class="contact-mascot">
                 <img src="images/mascots/1 (5).png" alt="Welcome Mascot">
+            </div>
+        </div>
+    </section>
+
+    <section class="founders-section">
+        <div class="container">
+            <div class="founders">
+                <h2>Meet Our Founders</h2>
+                <div class="founders-grid">
+                    <div class="founder">
+                        <img src="images/founders/Ami Shah.jpg" alt="Ami Shah">
+                        <h3>Ami Shah</h3>
+                        <p>Ami Shah is a sharp-minded Gujarati entrepreneur with a strong track record of scaling businesses. With years of hands-on experience managing finances across multiple restaurant formats and contributing to large business networks like Amway, she brings the vision, discipline, and strategy that power the brand. Her business instincts and passion for innovation helped introduce authentic Benne Dosa and regional South Indian flavours to Mumbai's food scene.</p>
+                    </div>
+                    <div class="founder">
+                        <img src="images/founders/Sudhir Naik.jpg" alt="Sudhir Naik">
+                        <h3>Sudhir Naik</h3>
+                        <p>Sudhir Naik, deeply rooted in South Indian culinary traditions, comes with extensive experience in operating and expanding restaurant chains. His expertise in kitchen operations, menu development, and maintaining authentic flavours ensures that every dish stays true to its origins. His commitment to quality and consistency forms the backbone of the brand's food philosophy.</p>
+                    </div>
+                </div>
+                <div class="founders-story">
+                    <h3>Together</h3>
+                    <p>Ami and Sudhir joined forces four years ago, blending her business mastery with his culinary expertise to build one of Mumbai's most loved destinations for South Indian comfort food. Their partnership introduced Benne Dosa to Mumbai and continues to bring regional flavours to the city with authenticity, warmth, and heart.</p>
+                </div>
+            </div>
+
+            <div class="why-name">
+                <h3>Why The Name South Indian Brahmin Café?</h3>
+                <p>It has nothing to do with casteism or division and it simply a reflection of tradition, authenticity, and the way food has been prepared for generations. Just like 'Punjabi Dhaba' or 'Parsi Café' represents a food culture, our name highlights the care, purity, and hygiene we put into every dish we serve.</p>
+                <p>More importantly, our restaurant is for everyone. We eat together, serve together, and believe that food is meant to bring people closer, not divide them.</p>
+                <p>We truly appreciate all your love and feedback. Our goal is to keep improving, serving better flavors, better experiences, and a welcoming space for all. Thank you for being part of our journey!</p>
             </div>
         </div>
     </section>
