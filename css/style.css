@@ -960,6 +960,110 @@ body.dark-mode .gallery-item {
     background: var(--bg-primary);
 }
 
+.franchise-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, rgba(247, 147, 30, 0.1) 0%, rgba(255, 213, 79, 0.1) 100%);
+    position: relative;
+}
+
+.franchise-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, rgba(247, 147, 30, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.franchise-section h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 50px;
+    color: var(--accent-orange);
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.coming-soon-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(247, 147, 30, 0.4);
+    animation: pulse 2s ease-in-out infinite;
+    letter-spacing: 1px;
+}
+
+.franchise-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+body.dark-mode .franchise-content {
+    background: rgba(42, 31, 26, 0.95);
+}
+
+.franchise-image {
+    flex: 1;
+    background: linear-gradient(135deg, rgba(247, 147, 30, 0.1), rgba(255, 213, 79, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.franchise-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.franchise-text {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.franchise-text h3 {
+    color: var(--accent-orange);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.franchise-text p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
 .branches {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1402,6 +1506,44 @@ footer {
 
     .founders-story p, .why-name p {
         font-size: 1rem;
+    }
+
+    .franchise-section {
+        padding: 40px 15px;
+    }
+
+    .franchise-section h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .coming-soon-badge {
+        font-size: 0.95rem;
+        padding: 8px 20px;
+    }
+
+    .franchise-content {
+        flex-direction: column;
+    }
+
+    .franchise-image {
+        padding: 30px;
+    }
+
+    .franchise-text {
+        padding: 30px;
+    }
+
+    .franchise-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .franchise-text p {
+        font-size: 1rem;
+        line-height: 1.8;
     }
 
     .about h2, .menu h2, .gallery h2, .contact h2 {
