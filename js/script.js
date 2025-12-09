@@ -1,59 +1,48 @@
-const menuItems = [
+const galleryItems = [
     { name: "Shrilankan Curry Idli", image: "images/food/1. Shrilankan curry idli.jpg" },
     { name: "Ghee Pudi Button Idli", image: "images/food/2. Ghee pudi button idli.jpg" },
     { name: "Dakshina Idli", image: "images/food/3. Dakshina idli.jpg" },
     { name: "Medu Wada", image: "images/food/5. Medu wada.jpg" },
+    { name: "Dal Khichdi", image: "images/food/10. Dal Khichdi.jpg" },
     { name: "Dil Khus Dosa", image: "images/food/11. Dil khus Dosa.jpg" },
+    { name: "Cheese Paniaram", image: "images/food/12. Cheese paniaram.jpg" },
+    { name: "Curd Rice", image: "images/food/13. Curd rice.jpg" },
+    { name: "Idli Chilli Fry", image: "images/food/14. Idli chilli fry.jpg" },
     { name: "Matka Dosa", image: "images/food/15. Matka Dosa.jpg" },
+    { name: "Thatte Idli", image: "images/food/16. Thatte idli.jpg" },
+    { name: "Ghee Masala Thatte Idli", image: "images/food/19. Ghee Masala Thatte idli.jpg" },
+    { name: "Pizza Open Dosa", image: "images/food/23. Pizza open Dosa.jpg" },
+    { name: "Bisi Bele Bhat", image: "images/food/24. Bisi bele bhat.jpg" },
+    { name: "Davangiri Benne Dosa", image: "images/food/27. Davangiri benne  Dosa.jpg" },
     { name: "Bahubali Dosa", image: "images/food/28. Bahubali Dosa.jpg" },
+    { name: "Davangiri Ghee Pudi", image: "images/food/29. Davangiri ghee pudi.jpg" },
     { name: "Pushpa Dosa", image: "images/food/30. Pushpa Dosa.jpg" },
+    { name: "Rasam Wada", image: "images/food/31. Rasam wada.jpg" },
     { name: "Kerala Masala Dosa", image: "images/food/32. Kerala Masala Dosa.jpg" },
     { name: "Mysore Masala Dosa", image: "images/food/33. Mysore Masala Dosa.jpg" },
-    { name: "Pav Bhaji", image: "images/food/21. Pav bhaji.jpg" },
-    { name: "Veg Biryani", image: "images/food/26. Veg Biryani.jpg" },
-    { name: "South Indian Thali", image: "images/food/51. South Indian thali.jpg" },
-    { name: "Bisi Bele Bhat", image: "images/food/24. Bisi bele bhat.jpg" },
     { name: "Paneer Lababdar", image: "images/food/34. Paneer lababdar.jpg" },
-    { name: "Cheese Paniaram", image: "images/food/12. Cheese paniaram.jpg" }
+    { name: "Kerala Paneer Masala Dosa", image: "images/food/35. Kerala paneer Masala Dosa.jpg" },
+    { name: "Kerala Cheese Masala Dosa", image: "images/food/37. Kerala cheese Masala Dosa.jpg" },
+    { name: "Upma", image: "images/food/40. Upma.jpg" },
+    { name: "Peri Peri Mini Idli", image: "images/food/44. Peri peri mini idli.jpg" },
+    { name: "Roasted Onion Tomato Uttappam", image: "images/food/46. Roasted onion tomato uttappam.jpg" },
+    { name: "Rasam Rice", image: "images/food/47. Rasam rice.jpg" },
+    { name: "Lemon Rice", image: "images/food/48. Lemon rice.jpg" },
+    { name: "Jini Dosa", image: "images/food/50. Jini Dosa.jpg" },
+    { name: "South Indian Thali", image: "images/food/51. South Indian thali.jpg" },
+    { name: "Pineapple Shira", image: "images/food/52. Pineapple shira.jpg" }
 ];
 
-const galleryImages = [
-    "images/food/16. Thatte idli.jpg",
-    "images/food/17. Veg kolapuri.jpg",
-    "images/food/18. Paneer palguni.jpg",
-    "images/food/19. Ghee Masala Thatte idli.jpg",
-    "images/food/20. Veg triple rice.jpg",
-    "images/food/22. Tawa Pulao.jpg",
-    "images/food/23. Pizza open Dosa.jpg",
-    "images/food/25. Dal fry.jpg",
-    "images/food/31. Rasam wada.jpg",
-    "images/food/40. Upma.jpg",
-    "images/food/41. Masala pav.jpg",
-    "images/food/46. Roasted onion tomato uttappam.jpg",
-    "images/food/47. Rasam rice.jpg",
-    "images/food/48. Lemon rice.jpg",
-    "images/food/50. Jini Dosa.jpg",
-    "images/food/52. Pineapple shira.jpg"
-];
-
-const menuGrid = document.getElementById('menuGrid');
-menuItems.forEach(item => {
-    const menuItem = document.createElement('div');
-    menuItem.className = 'menu-item';
-    menuItem.innerHTML = `
+const galleryGrid = document.getElementById('galleryGrid');
+galleryItems.forEach(item => {
+    const galleryItem = document.createElement('div');
+    galleryItem.className = 'gallery-item';
+    galleryItem.innerHTML = `
         <img src="${item.image}" alt="${item.name}">
-        <div class="menu-item-info">
+        <div class="gallery-item-name">
             <h3>${item.name}</h3>
         </div>
     `;
-    menuGrid.appendChild(menuItem);
-});
-
-const galleryGrid = document.getElementById('galleryGrid');
-galleryImages.forEach(image => {
-    const galleryItem = document.createElement('div');
-    galleryItem.className = 'gallery-item';
-    galleryItem.innerHTML = `<img src="${image}" alt="Food">`;
     galleryGrid.appendChild(galleryItem);
 });
 
